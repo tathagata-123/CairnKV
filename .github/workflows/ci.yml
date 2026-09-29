@@ -1,0 +1,17 @@
+name: CairnKV
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        preset: [debug, release, asan-ubsan]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake --preset ${{ matrix.preset }}
+      - name: Build
+        run: cmake --build --preset ${{ matrix.preset }} -j2
+      - name: Test
+        run: ctest --preset ${{ matrix.preset }} --output-on-failure

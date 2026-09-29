@@ -1,0 +1,13 @@
+/build/
+/build-*/
+.DS_Store
+__MACOSX/
+._*
+*.o
+*.a
+*.so
+*.dylib
+*.profraw
+__pycache__/
+/benchmark-output/
+/tmp-db/
